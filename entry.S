@@ -1,4 +1,4 @@
-/*
+/**
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/.
@@ -15,7 +15,6 @@
 __Vectors:
 .long    __StackTop                         /*     Top of Stack */
 .long    Reset_Handler                      /*     Reset Handler */
-#if 0
 .long    NMI_Handler                        /* -14 NMI Handler */
 .long    HardFault_Handler                  /* -13 Hard Fault Handler */
 .long    MemManage_Handler                  /* -12 MPU Fault Handler */
@@ -42,17 +41,18 @@ __Vectors:
 .long    Interrupt7_Handler                 /*   7 Interrupt 7 */
 .long    Interrupt8_Handler                 /*   8 Interrupt 8 */
 .long    Interrupt9_Handler                 /*   9 Interrupt 9 */
-#endif
+
 .space   (214 * 4)                          /* Interrupts 10 .. 224 are left out */
 __Vectors_End:
 .equ     __Vectors_Size, __Vectors_End - __Vectors
 .size    __Vectors, . - __Vectors
 
 
-.section .boot, "ax"
 .thumb
-.thumb_func
+.section .text
 .align 2
+
+.thumb_func
 .global Reset_Handler
 .type Reset_Handler, %function
 .extern (SystemInit)
@@ -62,59 +62,57 @@ Reset_Handler:
     bx r0
 
 
-#if 0
 /* The default macro is not used for HardFault_Handler
  * because this results in a poor debug illusion.
-*/
+ */
 .thumb_func
 .type    HardFault_Handler, %function
 .weak    HardFault_Handler
-.fnstart
+/* .fnstart */
 HardFault_Handler:
-  b        .
-.fnend
+    b        .
+/* .fnend */
 .size    HardFault_Handler, . - HardFault_Handler
+
 
 .thumb_func
 .type    Default_Handler, %function
 .weak    Default_Handler
-.fnstart
+/* .fnstart */
 Default_Handler:
-  b        .
-  .fnend
-  .size    Default_Handler, . - Default_Handler
+    b        .
+/* .fnend */
+.size    Default_Handler, . - Default_Handler
 
 /* Macro to define default exception/interrupt handlers.
  * Default handler are weak symbols with an endless loop.
  * They can be overwritten by real handlers.
  */
-  .macro   Set_Default_Handler  Handler_Name
-  .weak    \Handler_Name
-  .set     \Handler_Name, Default_Handler
-  .endm
+.macro   Set_Default_Handler  Handler_Name
+.weak    \Handler_Name
+.set     \Handler_Name, Default_Handler
+.endm
 
 
 /* Default exception/interrupt handler */
+Set_Default_Handler  NMI_Handler
+Set_Default_Handler  MemManage_Handler
+Set_Default_Handler  BusFault_Handler
+Set_Default_Handler  UsageFault_Handler
+Set_Default_Handler  SVC_Handler
+Set_Default_Handler  DebugMon_Handler
+Set_Default_Handler  PendSV_Handler
+Set_Default_Handler  SysTick_Handler
 
-  Set_Default_Handler  NMI_Handler
-  Set_Default_Handler  MemManage_Handler
-  Set_Default_Handler  BusFault_Handler
-  Set_Default_Handler  UsageFault_Handler
-  Set_Default_Handler  SVC_Handler
-  Set_Default_Handler  DebugMon_Handler
-  Set_Default_Handler  PendSV_Handler
-  Set_Default_Handler  SysTick_Handler
-
-  Set_Default_Handler  Interrupt0_Handler
-  Set_Default_Handler  Interrupt1_Handler
-  Set_Default_Handler  Interrupt2_Handler
-  Set_Default_Handler  Interrupt3_Handler
-  Set_Default_Handler  Interrupt4_Handler
-  Set_Default_Handler  Interrupt5_Handler
-  Set_Default_Handler  Interrupt6_Handler
-  Set_Default_Handler  Interrupt7_Handler
-  Set_Default_Handler  Interrupt8_Handler
-  Set_Default_Handler  Interrupt9_Handler
+Set_Default_Handler  Interrupt0_Handler
+Set_Default_Handler  Interrupt1_Handler
+Set_Default_Handler  Interrupt2_Handler
+Set_Default_Handler  Interrupt3_Handler
+Set_Default_Handler  Interrupt4_Handler
+Set_Default_Handler  Interrupt5_Handler
+Set_Default_Handler  Interrupt6_Handler
+Set_Default_Handler  Interrupt7_Handler
+Set_Default_Handler  Interrupt8_Handler
+Set_Default_Handler  Interrupt9_Handler
 
 .end
-#endif

@@ -5,7 +5,8 @@ Example Workspace für die Vorlesung Systemnahe Programmierung 2 an der
 DHWB Ravensburg.
 
 ## ARM Documentation
-- [Cortex M4 Startseite](https://developer.arm.com/Processors/Cortex-M4)
+ - [Cortex M4 Startseite](https://developer.arm.com/Processors/Cortex-M4)
+ - [GNU Assembler Documentation](https://sourceware.org/binutils/docs-2.40/as/index.html)
 
 ## Prerequisites
  - CMake

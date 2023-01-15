@@ -52,7 +52,6 @@ SECTIONS
   .text :
   {
     KEEP( *(.vectors) )
-    KEEP( *(.boot) )
     *(.text*)
   } > FLASH
 
