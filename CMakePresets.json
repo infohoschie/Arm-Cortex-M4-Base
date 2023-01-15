@@ -1,0 +1,26 @@
+{
+  "version": 3,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 24,
+    "patch": 0
+  },
+  "configurePresets": [
+    {
+      "name": "arm-cortex-m4",
+      "displayName": "GCC Arm EABI",
+      "description": "GCC Arm EABI",
+      "binaryDir": "build",
+      "toolchainFile": "toolchain.cmake",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug"
+      }
+    }
+  ],
+  "buildPresets": [
+    {
+      "name": "arm-cortex-m4",
+      "configurePreset": "arm-cortex-m4"
+    }
+  ]
+}
