@@ -3,19 +3,23 @@
 Example Workspace für die Vorlesung Systemnahe Programmierung 2 an der
 DHWB Ravensburg.
 
-## ARM Documentation
+## Arm Documentation
  - [Cortex M4 Startseite](https://developer.arm.com/Processors/Cortex-M4)
+   - [ARMv7-M Architecture Reference Manual](https://developer.arm.com/documentation/ddi0403/latest/)
+   - [Cortex-M4 Devices Generic User Guide](https://developer.arm.com/documentation/dui0553/b/?lang=en)
+   - [Arm Cortex-M4 Processor Technical Reference Manual Revision r0p1](https://developer.arm.com/documentation/100166/0001/?lang=en)
+ - [Arm Application Binary Interface](https://github.com/ARM-software/abi-aa)
  - [GNU Assembler Documentation](https://sourceware.org/binutils/docs-2.40/as/index.html)
  - [GNU Linker Documentation](https://sourceware.org/binutils/docs-2.40/ld/index.html)
 
 ## Prerequisites
  - CMake
- - ARM GCC Cross-Compiler
+ - Arm GCC Cross-Compiler
  - Wind River Simics
 
 ### Windows
 Installation von CMake über Download des Installers (https://cmake.org/download/)
-oder Paketmanager `winget install CMake.CMake.`
+oder Paketmanager `winget install CMake.CMake`.
 
 Installation der ARM GCC Toolchain [Website](https://gnutoolchains.com/arm-eabi/)
 Nach z.B. C:\Toolchains\
@@ -24,7 +28,7 @@ Nach z.B. C:\Toolchains\
 ### Linux
 Über Paketmanager Installieren:
 
-**Ubuntu/ Debian**: `sudo apt install gcc-arm-none-eabi cmake`
+**Ubuntu/ Debian**: ```sudo apt install gcc-arm-none-eabi cmake```
 
 **Arch**:
 ```
@@ -32,7 +36,7 @@ yay -S gcc-arm-none-eabi-bin
 sudo pacman -S cmake
 ```
 
-**macOS**: `brew install gcc-arm-embedded`
+**macOS**: ```brew install gcc-arm-embedded```
 
 ## Building
 Auschecken des Quellcodes:
@@ -40,22 +44,22 @@ Auschecken des Quellcodes:
 
 Erstellen des Build:
  - Mittels CMake Presets:
-   `cmake --preset arm-cortex-m4`
- - Klassisch
-   `cmake -B build -S . -DCMAKE_BUILD_TYPE=Debug -DCMAKE_TOOLCHAIN_FILE=toolchain.cmake`
+   ```cmake --preset arm-cortex-m4```
+ - Klassisch:
+   ```cmake -B build -S . -DCMAKE_BUILD_TYPE=Debug -DCMAKE_TOOLCHAIN_FILE=toolchain.cmake```
 
 Bauen:
  - Mittels CMake Presets:
-  `cmake --build --preset arm-cortex-m4`
- - Klassisch
-  `cmake --build build`
+  ```cmake --build --preset arm-cortex-m4```
+ - Klassisch:
+   ```cmake --build build```
  
 ## Running in Wind River Simics
 Install Wind River Simics (Currently only for Windows and Linux available)
 
 **Note**
 For Linux installation assure, that I386 Support is available, e.g. for 
-Ubuntu/ Debian: `sudo dpkg --add-architecture i386`
+Ubuntu/ Debian: ```sudo dpkg --add-architecture i386```
 
 Propagate the License Server via environment variable:
 ```SIMICS_LICENSE_FILE=27000@localhost```
