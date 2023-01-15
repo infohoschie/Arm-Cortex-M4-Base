@@ -59,10 +59,16 @@ SECTIONS
   .rodata :
   {
     *(.rodata*)
+    __data_start_rom__ = LOADADDR( .data );
   } > FLASH
 
-  /** TODO **/
-  .data : { *(.data) }
+  .data :
+  {
+    __data_start__ = .;
+    *(.data)
+    *(.data.*)
+    __data_end__ = .;
+  } > RAM AT > FLASH
 
   .bss :
   {
