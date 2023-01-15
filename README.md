@@ -1,5 +1,4 @@
-# Arm-Cortex-M4-Base
-Arm Cortex-M4 Base Project
+# Arm Cortex-M4 Base Project
 
 Example Workspace für die Vorlesung Systemnahe Programmierung 2 an der
 DHWB Ravensburg.
@@ -7,6 +6,7 @@ DHWB Ravensburg.
 ## ARM Documentation
  - [Cortex M4 Startseite](https://developer.arm.com/Processors/Cortex-M4)
  - [GNU Assembler Documentation](https://sourceware.org/binutils/docs-2.40/as/index.html)
+ - [GNU Linker Documentation](https://sourceware.org/binutils/docs-2.40/ld/index.html)
 
 ## Prerequisites
  - CMake
