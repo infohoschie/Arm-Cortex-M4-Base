@@ -12,16 +12,16 @@
 
 #include <stdint.h>
 
-const char myStaticString[] = "MY_STATIC STRING";
+const char myConstString[] = "MY CONST STRING";
 
-char myModString[] = "MY_STATIC STRING";
+char myModString[] = "MY MOD STRING";
 
 char myNotInitData[255];
 
 /**
  * @brief First C-Code startet from CPU initialisation.
  **/
-void SystemInit( void ) __attribute__((used));
+void SystemInit( void );
 
 /**
  * @brief Zeros the BSS Section.
@@ -33,7 +33,7 @@ static void zeroBss( void );
  **/
 static void copyData( void );
 
-void SystemInit( void )
+__attribute__((used)) void SystemInit( void )
 {
   zeroBss();
   copyData();

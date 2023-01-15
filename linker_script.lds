@@ -58,29 +58,40 @@ SECTIONS
   /* Read Only Data directly placed into Flash */
   .rodata :
   {
+    . = ALIGN(4);
+
     *(.rodata*)
-    __data_start_rom__ = LOADADDR( .data );
+
+    . = ALIGN( 4 );
   } > FLASH
 
   .data :
   {
+    . = ALIGN(4);
     __data_start__ = .;
+    __data_start_rom__ = LOADADDR( .data );
+
     *(.data)
     *(.data.*)
+
+    . = ALIGN( 4 );
     __data_end__ = .;
   } > RAM AT > FLASH
 
   .bss :
   {
     . = ALIGN(4);
+
     __bss_start__ = .;
     *(.bss)
     *(.bss.*)
     *(COMMON)
+
     . = ALIGN(4);
     __bss_end__ = .;
   } > RAM AT > RAM
 
+  /* Stack is located on top of RAM */
  .stack ( ORIGIN(RAM) + LENGTH(RAM) - __STACK_SIZE ) (NOLOAD) :
   {
     . = ALIGN(8);
