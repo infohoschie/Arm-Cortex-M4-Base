@@ -12,6 +12,7 @@
       "description": "GCC Arm EABI",
       "binaryDir": "build",
       "toolchainFile": "toolchain.cmake",
+      "generator": "Unix Makefiles",
       "cacheVariables": {
         "CMAKE_BUILD_TYPE": "Debug"
       }
