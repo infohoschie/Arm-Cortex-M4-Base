@@ -62,7 +62,7 @@ For Linux installation assure, that I386 Support is available, e.g. for
 Ubuntu/ Debian: ```sudo dpkg --add-architecture i386```
 
 Propagate the License Server via environment variable:
-```SIMICS_LICENSE_FILE=27000@localhost```
+```SIMICS_LICENSE_FILE=27000@wrs-lizenz.inf.dhbw-ravensburg.de```
 
 Start Simics, e.g. via command-line:
 ```<SIMICS_INSTALL>/bin/simics6_22_12/simics-6/simics-6.0.154/bin/simics-eclipse```
