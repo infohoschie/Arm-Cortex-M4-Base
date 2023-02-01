@@ -15,7 +15,8 @@ target_sources(
   testApp
   PRIVATE
     entry.S
-    entry_c.c )
+    entry_c.c
+    main.c )
 
 target_link_options(
   testApp

@@ -12,6 +12,8 @@
 
 #include <stdint.h>
 
+#include "main.h"
+
 const char myConstString[] = "MY CONST STRING";
 
 char myModString[] = "MY MOD STRING";
@@ -37,6 +39,10 @@ __attribute__((used)) void SystemInit( void )
 {
   zeroBss();
   copyData();
+
+  char myLocal[] = "XXX-TEST-XXX";
+
+  myMain();
 
   for (;;);
 }

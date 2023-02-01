@@ -59,10 +59,12 @@ SECTIONS
   .rodata :
   {
     . = ALIGN(4);
+    __ro_data_start__ = .;
 
     *(.rodata*)
 
     . = ALIGN( 4 );
+    __ro_data_end__ = .;
   } > FLASH
 
   .data :
